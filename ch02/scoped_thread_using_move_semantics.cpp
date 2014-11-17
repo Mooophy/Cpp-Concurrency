@@ -1,3 +1,13 @@
+//!
+//! @author Yue Wang
+//! @date   17 11 2014
+//!
+//! Based one the code in Listing 2.6 along with several significant differences :
+//! 1.  Rvalue reference parameter is explicitly specified to prevent ambiguity.
+//! 2.  Using Lambda for testing.
+//! 3.  A one-micorsecond delay was added to for enough time taken for new thread setup.
+//!
+
 #include <thread>
 #include <stdexcept>
 #include <iostream>
@@ -7,10 +17,12 @@
 namespace concur{
 
 /**
- * @brief   Ensuring life time of thread is within the scope
- *          by using RAII and move semantics.
+ * @brief       Ensuring life time of thread is within the scope
+ *              by using RAII and move semantics.
  *
- * @note    based on Listing 2.6
+ * @note        based on Listing 2.6
+ * @attention   Rvalue reference parameter is explicitly specified
+ *              for avoiding Ctors matching ambiguity
  */
 class ScopedThread
 {
