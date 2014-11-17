@@ -1,3 +1,7 @@
+//!
+//! @author Yue Wang
+//! @date   17 11 2014
+//!
 #include <thread>
 #include <iostream>
 #include <stdexcept>
