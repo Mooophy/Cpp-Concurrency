@@ -6,7 +6,7 @@
 #include <iostream>
 #include <stdexcept>
 
-namespace concur
+namespace para
 {
 /**
  * @brief Provide exception safety by RAII.
@@ -62,7 +62,7 @@ int main()
     std::thread t{func};
 
     {
-        concur::ThreadGuard guard{t};
+        para::ThreadGuard guard{t};
         do_something_that_may_throw_exceptions();
     }//<--where t join()
 }

@@ -14,7 +14,7 @@
 #include <chrono>
 
 
-namespace concur{
+namespace para{
 
 /**
  * @brief       Ensuring life time of thread is within the scope
@@ -50,7 +50,7 @@ int main()
     int local_object = 0;
 
     //! construct ScopedThread t with lambda to capture local object.
-    concur::ScopedThread t
+    para::ScopedThread t
     {
         std::thread
         {
