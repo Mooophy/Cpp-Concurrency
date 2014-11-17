@@ -61,3 +61,6 @@ int main()
 
     return 0;
 }
+//! output :
+//!
+//sum = 10000
