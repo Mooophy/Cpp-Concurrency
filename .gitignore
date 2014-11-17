@@ -25,4 +25,9 @@
 # Executables
 *.exe
 *.out
-*.app
+*.app 
+
+#
+*.user
+*Desktop_gcc*
+*.pro
