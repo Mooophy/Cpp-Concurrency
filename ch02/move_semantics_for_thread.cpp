@@ -24,7 +24,7 @@ int main()
     std::thread t2 = std::move(t1); //move constructor
     t1 = std::thread{some_other_function};
     //!  ^^^^^^^^^^^
-    //!  As it's an Rvalue, move assignment is able to be called.
+    //!  As it's an Rvalue, move assignment is called.
 
     std::thread t3;
     t3 = std::move(t2);     //move assignment
