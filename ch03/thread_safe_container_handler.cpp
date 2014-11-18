@@ -68,7 +68,7 @@ public:
     bool if_contains(const Value& val_to_find)
     {
         Lock lock{mutex_};
-        return std::find(begin(), end(), val_to_find) != end();
+        return std::find(cbegin(), cend(), val_to_find) != cend();
     }
 
     /**
@@ -87,12 +87,12 @@ private:
     Container& container_;
     std::mutex mutex_;
 
-    ConstIter begin() const
+    ConstIter cbegin() const
     {
         return container_.cbegin();
     }
 
-    ConstIter end() const
+    ConstIter cend() const
     {
         return container_.cend();
     }
