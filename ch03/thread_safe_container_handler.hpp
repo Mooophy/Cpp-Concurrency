@@ -5,6 +5,8 @@
 //!  Inspired by Listing 3.1, this code implemented:
 //!      A thread-safe container handler that supports generics and move semantics.
 //!
+#ifndef THREAD_SAFE_CONTAINER_HANDLER_HPP
+#define THREAD_SAFE_CONTAINER_HANDLER_HPP
 
 #include <iostream>
 #include <list>
@@ -100,37 +102,4 @@ private:
 
 }//namespace
 
-
-int main()
-{
-    /**
-     * @brief test for move semantics
-     */
-    std::list<int> list(3,42);
-    para::ContainerHandler<std::list<int>> handler(list);
-    handler.print()     <<  std::endl;
-
-    auto handler2 (std::move(handler));
-    handler2.print()    <<  std::endl;
-
-    auto handler3 = std::move(handler2);
-    handler3.print()    <<  std::endl;
-
-    /**
-     * @brief test for members
-     */
-    handler3.add(999);
-    handler3.print()    <<  std::endl;
-    std::cout << (handler3.if_contains(999)? "found\n" : "no such thing\n");
-
-    return 0;
-}
-//! output
-//!
-//42 42 42
-//42 42 42
-//42 42 42
-//42 42 42 999
-//found
-
-
+#endif // THREAD_SAFE_CONTAINER_HANDLER_HPP
