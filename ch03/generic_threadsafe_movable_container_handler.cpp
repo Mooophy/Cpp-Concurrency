@@ -3,7 +3,7 @@
 //! @date   18.11.2014
 //!
 //!  Inspired by Listing 3.1, this code implemented:
-//!      A generics, thread safe , moveable and uncopyable container handler.
+//!      A thread-safe container handler that supports generics and move semantics.
 //!
 
 #include <iostream>
@@ -16,7 +16,7 @@ namespace para {
 /**
  * @brief       A thread safe container handler.
  *
- * @featurs     generics, thread safe , moveable and uncopyable
+ * @featurs     generic, thread safe , movable and uncopyable
  */
 template<typename Container>
 class ContainerHandler
@@ -44,6 +44,7 @@ public:
         return *this = std::move(rhs);
     }
 
+    //! deleted
     ContainerHandler()                                      =   delete;
     ContainerHandler(const ContainerHandler&)               =   delete;
     ContainerHandler& operator =(const ContainerHandler&)   =   delete;
