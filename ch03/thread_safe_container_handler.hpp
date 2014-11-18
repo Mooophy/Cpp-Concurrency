@@ -31,7 +31,7 @@ public:
     //!Ctor
     explicit ContainerHandler(Container& c):
         container_(c),
-        mutex_{}
+        mutex_{} //<--note : std::mutext has no copy Ctor nor move Ctor.
     {}
 
     //! move Ctor
@@ -67,7 +67,7 @@ public:
      *
      * @feature thread safe
      */
-    bool if_contains(const Value& val_to_find)
+    bool if_contains(const Value& val_to_find) const
     {
         Lock lock{mutex_};
         return std::find(cbegin(), cend(), val_to_find) != cend();
@@ -78,7 +78,7 @@ public:
      *
      * @feature thread safe
      */
-    std::ostream& print()
+    std::ostream& print() const
     {
         Lock lock{mutex_};
         for(const auto& elem : container_)  std::cout << elem << " ";
@@ -87,7 +87,7 @@ public:
 
 private:
     Container& container_;
-    std::mutex mutex_;
+    mutable std::mutex mutex_;
 
     ConstIter cbegin() const
     {
