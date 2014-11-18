@@ -120,6 +120,7 @@ int main()
      * @brief test for members
      */
     handler3.add(999);
+    handler3.print()    <<  std::endl;
     std::cout << (handler3.if_contains(999)? "found\n" : "no such thing\n");
 
     return 0;
@@ -129,5 +130,7 @@ int main()
 //42 42 42
 //42 42 42
 //42 42 42
+//42 42 42 999
 //found
+
 
