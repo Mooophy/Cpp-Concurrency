@@ -1,3 +1,10 @@
+//!
+//! @author Yue Wang
+//! @date   19.11.2014
+//!
+//! Implementation for Listing 3.6
+//!
+
 #ifndef USING_STDLOCK_TO_AVOID_DEADLOCK_HPP
 #define USING_STDLOCK_TO_AVOID_DEADLOCK_HPP
 
@@ -7,12 +14,28 @@
 
 namespace para{
 
+/**
+ * @brief The SomethingBig struct
+ *
+ * Implementation for the class sme_big_object in Listing 3.6
+ */
 template<typename Data>
 struct SomethingBig
 {
+    friend std::ostream&
+    operator <<(std::ostream& os, SomethingBig const& rhs)
+    {
+        return  os << *rhs.data_;
+    }
+
     std::shared_ptr<Data> data_;
 };
 
+/**
+ * @brief swap
+ *
+ * implementation for swap in Listing 3.6
+ */
 template<typename T>
 void swap(SomethingBig<T>&lhs, SomethingBig<T>& rhs)
 {
@@ -21,33 +44,42 @@ void swap(SomethingBig<T>&lhs, SomethingBig<T>& rhs)
     auto tmp = rhs.data_;
     rhs.data_ = lhs.data_;
     lhs.data_ = tmp;
-
-    std::cout << "\nnot from std::swap\n" << std::endl;
-    return;
 }
 
+/**
+ * @brief The WrapperForSomethingBig class
+ *
+ * Implementation for the class X in Listing 3.6
+ */
 template<typename T>
 class WrapperForSomethingBig
 {
-public:
-    friend void swap(WrapperForSomethingBig &lhs, WrapperForSomethingBig &rhs)
+    friend void
+    swap(WrapperForSomethingBig &lhs, WrapperForSomethingBig &rhs)
     {
         if(&lhs == &rhs)    return;
 
         using std::swap;
-        std::lock(lhs.data_,rhs.data_);
+        std::lock(lhs.mutex_,rhs.mutex_);
         std::lock_guard<std::mutex> lock_l(lhs.mutex_, std::adopt_lock);
         std::lock_guard<std::mutex> lock_r(rhs.mutex_, std::adopt_lock);
         swap(lhs.detail_,rhs.detail_);
     }
 
+    friend std::ostream&
+    operator <<(std::ostream& os, const WrapperForSomethingBig& rhs)
+    {
+        return os << rhs.detail_;
+    }
+
+public:
     explicit WrapperForSomethingBig(const SomethingBig<T>& sth):
-        detail_{sth}
+        detail_(sth)//<-- a shallow copy
     {}
 
 private:
     SomethingBig<T> detail_;
-    std::mutex  mutex_;
+    mutable std::mutex  mutex_;
 };
 }//namespace
 
