@@ -18,9 +18,34 @@ namespace para {
  *
  * inherited from std::exception
  */
-struct EmptyStack : std::exception
+class EmptyStackException : std::exception
 {
-    const char* what () const throw();
+public:
+    EmptyStackException():
+        msg_{"para exception : empty stack"}
+    {}
+
+    explicit EmptyStackException(const char* msg):
+        msg_{msg}
+    {}
+
+    explicit EmptyStackException(const std::string& msg):
+        msg_{msg.c_str()}
+    {}
+
+    explicit EmptyStackException(std::string&& msg)noexcept:
+        msg_{std::move(msg).c_str()}
+    {}
+
+    virtual const char* what ()  const throw() override
+    {
+        return msg_.c_str();
+    }
+
+    ~EmptyStackException(){}
+
+private:
+    const std::string msg_;
 };
 
 template<typename Value>
@@ -77,7 +102,7 @@ private:
 
     void throw_exception_if_empty()
     {
-        if(data_.empty())   throw para::EmptyStack{};
+        if(data_.empty())   throw para::EmptyStackException{};
     }
 
 };
