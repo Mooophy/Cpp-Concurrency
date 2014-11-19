@@ -23,18 +23,22 @@ namespace para {
 class EmptyStackException : std::exception
 {
 public:
+    //! default Ctor
     EmptyStackException():
         msg_{"para exception : empty stack"}
     {}
 
+    //! Ctor
     explicit EmptyStackException(const char* msg):
         msg_{msg}
     {}
 
+    //! Ctor
     explicit EmptyStackException(const std::string& msg):
         msg_{msg.c_str()}
     {}
 
+    //! move Ctor
     explicit EmptyStackException(std::string&& msg)noexcept:
         msg_{std::move(msg).c_str()}
     {}
@@ -56,6 +60,14 @@ private:
     const std::string msg_;
 };
 
+/**
+ * @brief   ThreadsafeStack
+ * @note    based on Listing 3.4
+ * @modifications
+ *      1. alias for std::lock_guard<std::mutex>
+ *      2. alias for std::shared_ptr<Value>
+ *      3. a wrapper for exception throwing
+ */
 template<typename Value>
 class ThreadsafeStack
 {
@@ -74,12 +86,14 @@ public:
 
     ThreadsafeStack& operator = (const ThreadsafeStack&) = delete;
 
+    //! push
     void push(Value new_val)
     {
         Guard g{mutex_};
         data_.push(new_val);
     }
 
+    //! pop returnning shared pointer
     SharedPointer pop()
     {
         Guard g{mutex_};
@@ -90,6 +104,7 @@ public:
         return pointer;
     }
 
+    //! pop with reference as argument
     void pop(Value& dest)
     {
         Guard g{mutex_};
@@ -98,6 +113,7 @@ public:
         data_.pop();
     }
 
+    //! empty
     bool empty()const
     {
         Guard g{mutex_};
@@ -108,11 +124,11 @@ private:
     std::stack<Value> data_;
     mutable std::mutex mutex_;
 
+    //! wrapper for exception throwing
     void throw_exception_if_empty()
     {
         if(data_.empty())   throw para::EmptyStackException{};
     }
-
 };
 }//namespace
 #endif // THREADSAFE_STACK_HPP
