@@ -14,9 +14,11 @@
 namespace para {
 
 /**
- * @brief EmptyStack
+ * @brief   EmptyStack
+ *          inherited from std::exception
  *
- * inherited from std::exception
+ * @modifications
+ *          Listing 3.4 provides declaration only, here's my implementation.
  */
 class EmptyStackException : std::exception
 {
@@ -37,6 +39,12 @@ public:
         msg_{std::move(msg).c_str()}
     {}
 
+    /**
+     * @brief what
+     * @note        specifier `throw()` is extensively considered as uselessness and
+     *              even a bad practise. Listing 3.4 using it ,however, here
+     *              follows the its style.
+     */
     virtual const char* what ()  const throw() override
     {
         return msg_.c_str();
