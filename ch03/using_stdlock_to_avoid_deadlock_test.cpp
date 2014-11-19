@@ -5,7 +5,6 @@
 //! test for Listing 3.6
 //!
 
-#include"../include/utilities.hpp"
 #include "using_stdlock_to_avoid_deadlock.hpp"
 
 int main()

@@ -17,7 +17,7 @@ namespace para{
 /**
  * @brief The SomethingBig struct
  *
- * Implementation for the class sme_big_object in Listing 3.6
+ * Generic implementation for the class some_big_object in Listing 3.6.
  */
 template<typename Data>
 struct SomethingBig
@@ -34,7 +34,7 @@ struct SomethingBig
 /**
  * @brief swap
  *
- * implementation for swap in Listing 3.6
+ * Generic implementation for swap in Listing 3.6
  */
 template<typename T>
 void swap(SomethingBig<T>&lhs, SomethingBig<T>& rhs)
@@ -49,7 +49,7 @@ void swap(SomethingBig<T>&lhs, SomethingBig<T>& rhs)
 /**
  * @brief The WrapperForSomethingBig class
  *
- * Implementation for the class X in Listing 3.6
+ * Generic implementation for the class X in Listing 3.6
  */
 template<typename T>
 class WrapperForSomethingBig
