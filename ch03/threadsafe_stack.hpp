@@ -47,7 +47,7 @@ public:
      * @brief what
      * @note        specifier `throw()` is extensively considered as uselessness and
      *              even a bad practise. Listing 3.4 using it ,however, here
-     *              follows the its style.
+     *              follows this style.
      */
     virtual const char* what ()  const throw() override
     {

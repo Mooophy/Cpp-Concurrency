@@ -44,8 +44,7 @@ int main()
     std::thread pop_with_value_n_print
     {
         [&]{
-            int buff=0;
-            while(!stk.empty())
+            for(int buff=0; !stk.empty();   )
             {
                 stk.pop(buff);
                 std::cout << buff << " " << std::flush;
