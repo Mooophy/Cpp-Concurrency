@@ -1,3 +1,13 @@
+//!
+//! @author Yue Wang
+//! @date   20.11.2014
+//!
+//! @brief  Implementation for para::HierachicalMutex.
+//!
+//!         As well as an example for a user-defined mutex class that satisfies
+//!         the mutex concept :
+//!             lock()      unlock()    try_lock()
+//!
 #ifndef HIERARCHICAL_MUTEX__HPP
 #define HIERARCHICAL_MUTEX__HPP
 
@@ -7,6 +17,12 @@
 
 namespace para{
 
+/**
+ * @brief The HierachicalMutex class
+ *
+ * meets mutex concept :
+ *      lock()      unlock()    try_lock()
+ */
 class HierachicalMutex
 {
 public:
