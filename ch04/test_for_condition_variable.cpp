@@ -2,9 +2,8 @@
 //! @author Yue Wang
 //! @date   20.11.2014
 //!
-//!
-//! @brief  this code shows how to use std::condition_variable to transfer messages
-//!         between two threads as well as an implementation for Listing 4.1
+//! @brief  Based on Listing 4.1, this code implemented messages transfer between two threads, 
+//!         using std::condition_variable.. 
 //!
 
 #include <mutex>
