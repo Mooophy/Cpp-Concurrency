@@ -3,7 +3,7 @@
 //! @date   20.11.2014
 //!
 //! @brief  Based on Listing 4.1, this code implemented messages transfer between two threads, 
-//!         using std::condition_variable.. 
+//!         using std::condition_variable. 
 //!
 
 #include <mutex>
