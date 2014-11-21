@@ -5,20 +5,19 @@
 //! @brief  this code tests para::Queue.
 //!
 
+#include <string>
 #include "ordinary_queue.hpp"
 #include "../include/utilities.hpp"
-#include <queue>
-#include <string>
 
 int main()
 {
-    //! construct queue and push elements
+    //! construct and push elements
     para::Queue<std::string> q;
-    for(auto&& i : {"ab","cd","efg","hi","jk"}) q.push(i);
-    q.emplace("wxyz");
+    for(auto&& i : {"ab","cd","efg"}) q.push(i);
+    q.emplace("wxyz1234");
 
-    //! pop all elements and print
-    for(;!q.empty();q.pop())    para::println(q.front());
+    //! pop and print
+    for( ; !q.empty(); q.pop())    para::println(q.front());
     return 0;
 }
 //! @output
@@ -26,7 +25,6 @@ int main()
 //ab
 //cd
 //efg
-//hi
-//jk
-//wxyz
+//wxyz1234
+
 

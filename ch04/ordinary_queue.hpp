@@ -2,12 +2,13 @@
 //! @author Yue Wang
 //! @date   21.11.2014
 //!
-//! @brief  this code implmented a common queue ,quite Gcc's STL implementation
+//! @brief  implementation for a non thread-safe queue, similar to Gcc's std::queue.
+//!
 //! @note   swap and other operators overloading are not implemented for simplicity.
 //!
 
-#ifndef COMMON_QUEUE_HPP
-#define COMMON_QUEUE_HPP
+#ifndef ORDINARY_QUEUE_HPP
+#define ORDINARY_QUEUE_HPP
 
 #include <deque>
 
