@@ -1,3 +1,10 @@
+//!
+//! @author Yue Wang
+//! @date   21.11.2014
+//! 
+//! @brief  This code tests para::ThreadsafeQueue with two threads.
+//! 
+
 #include <thread>
 #include "threadsafe_queue.hpp"
 #include "../include/utilities.hpp"
