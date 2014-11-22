@@ -1,3 +1,8 @@
+//!
+//! @author Yue Wang
+//! @date   21.11.2014
+//!
+
 #ifndef THREADSAFE_QUEUE_HPP
 #define THREADSAFE_QUEUE_HPP
 
@@ -8,6 +13,12 @@
 
 namespace para {
 
+/**
+ * @brief   The ThreadsafeQueue class
+ *
+ * @note    based on Listing 4.5, modifications :
+ *              a move constructor added
+ */
 template<typename T>
 class ThreadsafeQueue
 {
@@ -86,8 +97,6 @@ private:
     mutable std::mutex mutex_;
     std::condition_variable cond_;
 };
-
 }//namespace
-
 
 #endif // THREADSAFE_QUEUE_HPP
