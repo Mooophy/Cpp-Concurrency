@@ -1,3 +1,10 @@
+//!
+//! @author Yue wang
+//! @date   24.11.2014
+//!
+//! @brief  Implementation for Listing 4.7 with a few insignicant modifications.
+//!
+
 #include <future>
 #include "../include/utilities.hpp"
 
@@ -64,3 +71,19 @@ int main()
 
     return 0;
 }
+//! output
+//!
+//X::foo is working
+//42
+
+//X::bar is working
+//hello
+
+//Y::operator () is working
+//3.14
+
+//Y::operator () is working
+//1.11
+
+//MoveOnly::operator () is working
+//42
