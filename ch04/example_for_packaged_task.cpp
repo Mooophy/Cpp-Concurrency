@@ -58,3 +58,10 @@ int main()
 
     return 0;
 }
+//! possible output :
+//!
+//>pls enter something:
+//aaaaa
+//a task was passed from ui : aaaaa
+//1111111
+//a task was passed from ui : 1111111
