@@ -41,7 +41,7 @@ std::list<T> parallel_functional_quick_sort(std::list<T> l)
             return t < pivot;
     });
 
-    //!build the unsorted lower part
+    //!split l into two parts, lower and higher
     list<T> lower;
     lower.splice(lower.end(),l,l.begin(),divide_point);
 
