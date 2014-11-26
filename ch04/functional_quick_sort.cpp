@@ -24,9 +24,10 @@ std::list<T> sequential_functional_quick_sort(std::list<T> input)
     std::list<T> ret;
     ret.splice(ret.begin(),input,input.begin());
     T pivot = ret.front();
-    auto divide_point = std::partition(input.begin(),input.end(), [=](T const& t){
-        return t < pivot;
-    });
+    auto divide_point = std::partition(input.begin(),input.end(),
+        [=](T const& t){
+            return t < pivot;
+        });
 
     std::list<T> lower;
     lower.splice(lower.end(), input, input.begin(),divide_point);
