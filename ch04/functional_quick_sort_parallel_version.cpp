@@ -50,6 +50,7 @@ std::list<T> parallel_functional_quick_sort(std::list<T> l)
     //!             thread is needed for sorted_lower. As a result, threads number will differ
     //!             on different platform.
     future<list<T>> sorted_lower   =   async(&parallel_functional_quick_sort<T>,move(lower));
+    //!                                      ^ <--either pointer to function or function can be used here
            list<T>  sorted_higher  =          parallel_functional_quick_sort(move(l));
 
     //! merge by splicing
