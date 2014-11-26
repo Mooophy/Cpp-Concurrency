@@ -22,7 +22,7 @@ std::list<T> sequential_functional_quick_sort(std::list<T> input)
     if(input.empty())   return input;   //  termination condtion
 
     std::list<T> ret;
-    ret.splice(ret.begin(),input,input.begin());
+    ret.splice(ret.begin(), input, input.begin());
     T pivot = ret.front();
     auto divide_point = std::partition(input.begin(),input.end(),
         [=](T const& t){
