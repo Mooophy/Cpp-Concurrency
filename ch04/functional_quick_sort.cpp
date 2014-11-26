@@ -1,3 +1,9 @@
+//!
+//! @author Yue Wang
+//! @date   26.11.2014
+//!
+//! @brief  Implementation for Listing 4.12
+
 #include <../include/utilities.hpp>
 #include <iostream>
 #include <list>
@@ -5,6 +11,11 @@
 
 namespace para {
 
+/**
+ * @brief sequential_functional_quick_sort
+ *
+ * for Listing 4.12
+ */
 template<typename T>
 std::list<T> sequential_functional_quick_sort(std::list<T> input)
 {
@@ -39,3 +50,7 @@ int main()
 
     return 0;
 }
+//! @output
+//!
+//para> 6 3 2 5 1 4
+//para> 1 2 3 4 5 6
