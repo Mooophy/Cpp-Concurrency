@@ -19,8 +19,8 @@ using FutureResult = typename std::future< typename std::result_of<F(A&&)>::type
  * @param   arguments
  * @return  future
  *
- * @bug     There is a bug in Listing 4.14 : two `typename`s have been omitted.
- *          The code has fixed it.
+ * @bug     There was a bug in Listing 4.14 : two `typename`s have been omitted.
+ *          The code here has fixed it.
  *
  * @modifications
  *          using alias for better readablity.
